@@ -26,6 +26,7 @@ private:
 
     const int sizeX;
     const int sizeY;
+
 };
 
 Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
@@ -101,4 +102,57 @@ Board::~Board()
 void Board::print()
 {
     cout << endl << "   ";
+
+    for(int i=0; i< sizeX;i++)
+    {
+        cout << (char)(97+i);
+    }
+
+    cout << endl << endl;
+
+
+    for(int y=0; y < sizeY; y++)
+    {
+        cout << (char)(97+y)<<" ";
+
+        for(int x=0; x<sizeX; x++)
+        {
+            cout << uif[x][y];
+        }
+        cout << endl;
+
+    }
+    cout << endl;
 }
+
+char Board::getData(int x, int y)
+{
+    if(x < sizeX && y < sizeY && x >= 0 && y >= 0)
+    {
+        return data[x][y];
+    }
+
+    return 'o';
+}
+
+void Board::moveToUIF(int x, int y)
+{
+    uif[x][y] = data[x][y];
+}
+
+void Board::checkEmptyField(int x, int y)
+{
+    //incomplete
+}
+
+
+int Board::addToMineCount(int x, int y, int& minecount)
+{
+    //incomplete
+}
+
+int Board::getGameStatus()
+{
+    //incomplete
+}
+
