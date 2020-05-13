@@ -9,6 +9,7 @@ class Board
 {
 
 public:
+    Board();
     Board(int mines, int sizex, int sizey);
     ~Board();
     void print();
@@ -18,16 +19,24 @@ public:
     int addToMineCount(int x, int y, int& minecount);
     int getGameStatus();
 
+     int sizeX;
+     int sizeY;
+
 private:
 
     //MULTIDIMENSIONAL ARRAYS
     char** uif;   //what user sees
     char** data;  //actual data
 
-    const int sizeX;
-    const int sizeY;
-
 };
+
+Board::Board()
+{
+    sizeX = 0;
+    sizeY = 0;
+
+}
+
 
 Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
 {
@@ -148,7 +157,12 @@ void Board::checkEmptyField(int x, int y)
 
 int Board::addToMineCount(int x, int y, int& minecount)
 {
-    //incomplete
+    if(x>=0 && x < sizeX && y>=0 && y < sizeY)
+    {
+        if(data[x][y] == 'm')
+            minecount++;
+    }
+    return 0;
 }
 
 int Board::getGameStatus()
