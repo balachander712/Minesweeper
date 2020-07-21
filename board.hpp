@@ -43,7 +43,7 @@ Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
 
     srand(time(NULL));
 
-
+    //initialising arrays
     uif = new char* [sizeX];
     data = new char* [sizeX];
     for(int i=0;i<sizeX;i++)
@@ -52,6 +52,8 @@ Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
         data[i] = new char[sizeY];
     }
 
+
+    //initially fill arrays with dots
     for(int y = 0; y < sizeY; y++)
     {
         for(int x = 0; x < sizeX; x++)
@@ -62,6 +64,7 @@ Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
     }
 
 
+    //first add mines to data
     for(int i = 0; i<mines;i++)
     {
         int x,y;
@@ -86,8 +89,18 @@ Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
             if(data[x][y] != 'm')
             {
                 int minecount = 0;
-                //incomplete
+                //completed
                 //after defining other functions
+                addToMineCount(x-1,y-1,minecount);
+                addToMineCount(x,y-1,minecount);
+                addToMineCount(x+1,y-1,minecount);
+                addToMineCount(x-1,y,minecount);
+                addToMineCount(x+1,y,minecount);
+                addToMineCount(x-1,y+1,minecount);
+                addToMineCount(x,y+1,minecount);
+                addToMineCount(x+1,y+1,minecount);
+                char c = (char)((int)'0'+minecount); 
+                data[x][y] = c;
             }
         }
     }
@@ -107,7 +120,7 @@ Board::~Board()
 	delete[] uif;
 }
 
-
+//print the board
 void Board::print()
 {
     cout << endl << "   ";
@@ -144,6 +157,7 @@ char Board::getData(int x, int y)
     return 'o';
 }
 
+//copy minecount from data to UIF
 void Board::moveToUIF(int x, int y)
 {
     uif[x][y] = data[x][y];
@@ -154,7 +168,7 @@ void Board::checkEmptyField(int x, int y)
     //incomplete
 }
 
-
+//if data[x][y] contains mine increment mine count
 int Board::addToMineCount(int x, int y, int& minecount)
 {
     if(x>=0 && x < sizeX && y>=0 && y < sizeY)
@@ -168,5 +182,20 @@ int Board::addToMineCount(int x, int y, int& minecount)
 int Board::getGameStatus()
 {
     //incomplete
+    for(int y = 0; y<sizeY; y++)
+    {
+        for(int x = 0; x<sizeX; x++)
+        {
+            if(uif[x][y] == '.')
+            {
+                if(data[x][y] != 'm')
+                {
+                    return 0;
+                }
+            }
+        }
+    }
+    //if all dots are mine return 1
+    return 1;
 }
 

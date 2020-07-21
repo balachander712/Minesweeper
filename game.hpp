@@ -36,6 +36,7 @@ int Game::update(int x,int y)
 {
     if(board.getData(x,y) == 'm') 
     {
+        //if mine was hit
         return -1;
     }
     else if(board.getData(x,y))
