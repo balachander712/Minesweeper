@@ -1,4 +1,4 @@
-#include <board.h>
+#include "board.h"
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
@@ -6,7 +6,6 @@
 
 using namespace std;
 
-//ctor
 Board::Board(int mines, int sizex, int sizey) : sizeX(sizex), sizeY(sizey)
 {
 	srand(time(NULL));

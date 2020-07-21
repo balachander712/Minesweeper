@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1595342070 source:c:\users\admin\desktop\minesweeper\board.cpp
+	"board.h"
+	<iostream>
+	<time.h>
+	<cstdlib>
+
+1595341945 c:\users\admin\desktop\minesweeper\board.h
+
+1595342091 source:c:\users\admin\desktop\minesweeper\game.cpp
+	"game.h"
+	<iostream>
+
+1595341893 c:\users\admin\desktop\minesweeper\game.h
+	"board.h"
+
+1595342091 source:c:\users\admin\desktop\minesweeper\main.cpp
+	<iostream>
+	"game.h"
+	<string>
+	<time.h>
+

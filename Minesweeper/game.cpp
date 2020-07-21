@@ -1,4 +1,4 @@
-#include <game.h>
+#include "game.h"
 #include <iostream>
 
 using namespace std;
@@ -28,7 +28,7 @@ int Game::update(int x, int y)
 		board.checkEmptyField(x, y);
 		// out of bounds
 	} else if(board.getData(x, y) == 'o'){
-		
+
 	}
 	else {
 		// none of the above, so a number was hit

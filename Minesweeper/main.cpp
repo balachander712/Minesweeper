@@ -1,5 +1,6 @@
+
 #include <iostream>
-#include <game.h>
+#include "game.h"
 #include <string>
 #include <time.h>
 
@@ -41,9 +42,9 @@ int main()
 		x = turn[1] - 97;
 		y = turn[0] - 97;
 		status = game.update(x, y);
-		if(status == -1) 
+		if(status == -1)
 		{
-			cout << endl << "You lost. Press any key to exit" << endl; 
+			cout << endl << "You lost. Press any key to exit" << endl;
 			break;
 		}
 		if(status == 1)

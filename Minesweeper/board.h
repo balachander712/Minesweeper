@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef BOARD_H_INCLUDED
+#define BOARD_H_INCLUDED
 
 class Board
 {
@@ -23,4 +23,4 @@ private:
 	const int sizeY;
 };
 
-#endif
+#endif // BOARD_H_INCLUDED
