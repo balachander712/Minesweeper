@@ -166,6 +166,22 @@ void Board::moveToUIF(int x, int y)
 void Board::checkEmptyField(int x, int y)
 {
     //incomplete
+    if(data[x][y] == '0' && uif[x][y] == '.')
+    {
+        uif[x][y] == '0';
+        checkEmptyField(x-1,y-1);
+        checkEmptyField(x,y-1);
+        checkEmptyField(x+1,y-1);
+        checkEmptyField(x-1,y);
+        checkEmptyField(x+1,y);
+        checkEmptyField(x-1,y+1);
+        checkEmptyField(x,y+1);
+        checkEmptyField(x+1,y+1);
+    }
+    else
+    {
+        moveToUIF(x,y);
+    }
 }
 
 //if data[x][y] contains mine increment mine count

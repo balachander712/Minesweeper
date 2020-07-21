@@ -40,4 +40,27 @@ int Game::update(int x,int y)
         return -1;
     }
     else if(board.getData(x,y))
+    {
+        //if empty field was hit enter recursive function
+        board.checkEmptyField(x,y);
+    }
+    else if(board.getData(x,y) == 'o')
+    {
+
+    }
+    else
+    {
+        //none of the above, a number was hit
+        board.moveToUIF(x,y);
+    }
+    if(board.getGameStatus() == 1)
+    {
+        board.print();
+        return 1;
+    }
+    cout << endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+
+    board.print();
+    return 0;
+
 }
