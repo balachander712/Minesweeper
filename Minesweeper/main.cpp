@@ -3,6 +3,8 @@
 #include "game.h"
 #include <string>
 #include <time.h>
+#include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -22,6 +24,9 @@ int main()
 {
 	int minecount, sizeX, sizeY, x, y, status;
 	string turn;
+	ofstream fout;
+	int total_time;
+	int flag = 0;
 	getUserInput(sizeX, "Enter board width (3-16): ");
 	getUserInput(sizeY, "Enter board height (3-16): ");
 	getUserInput(minecount, "Enter the number of mines: ");
@@ -44,15 +49,42 @@ int main()
 		status = game.update(x, y);
 		if(status == -1)
 		{
+            int t = (int) difftime(time(0), start);
+			total_time = t;
 			cout << endl << "You lost. Press any key to exit" << endl;
 			break;
 		}
 		if(status == 1)
 		{
 			int t = (int) difftime(time(0), start);
+			total_time = t;
 			cout << endl << "Congratulations! You won the game in " << t << " seconds." << endl;
 			break;
 		}
 	}
+
+	try
+	{
+	    fout.open("log/logs.txt",fstream::app);
+	    time_t now = time(0);
+	    char* dt = ctime(&now);
+
+	    fout << dt << "\t";
+
+	    if(flag == 0)
+        {
+            fout << "Game lost: Played for " << total_time << " seconds." << endl;
+        }
+        else
+        {
+            fout << "Game won: Played for " << total_time << " seconds." << endl;
+
+        }
+	}
+	catch(const ofstream::failure& e)
+	{
+
+	}
+    fout.close();
 	return 0;
 }
