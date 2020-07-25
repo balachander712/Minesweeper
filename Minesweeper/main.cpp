@@ -25,12 +25,42 @@ int main()
 	int minecount, sizeX, sizeY, x, y, status;
 	string turn;
 	ofstream fout;
+	string name;
+	cout << "Enter your name before Playing!!!" << endl;
+	cin >> name;
+	LEVEL:cout << "1. Easy" << endl;
+	cout << "2. Medium" << endl;
+	cout << "3. Hard" << endl;
+	cout << "4. Custom" << endl;
+	int level;
+	cout << "Enter the difficulty level";
+	cin >> level;
 	int total_time;
 	int flag = 0;
-	getUserInput(sizeX, "Enter board width (3-16): ");
-	getUserInput(sizeY, "Enter board height (3-16): ");
-	getUserInput(minecount, "Enter the number of mines: ");
-	Game game(minecount, sizeX, sizeY);
+	if(level == 1)
+    {
+        Game game(minecount, sizeX, sizeY);
+    }
+    else if(level == 2)
+    {
+        Game game(minecount, sizeX, sizeY);
+    }
+    else if(level == 3)
+    {
+        Game game(minecount, sizeX, sizeY);
+    }
+    else if(level == 4)
+    {
+        getUserInput(sizeX, "Enter board width (3-16): ");
+        getUserInput(sizeY, "Enter board height (3-16): ");
+        getUserInput(minecount, "Enter the number of mines: ");
+        Game game(minecount, sizeX, sizeY);
+    }
+	else
+    {
+        cout << "Enter a valid level ";
+        goto LEVEL;
+    }
 
 	time_t start = time(0);
 	// main game loop
@@ -70,6 +100,8 @@ int main()
 	    char* dt = ctime(&now);
 
 	    fout << dt << "\t";
+
+	    fout << name << " ";
 
 	    if(flag == 0)
         {

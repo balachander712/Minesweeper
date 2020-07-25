@@ -83,7 +83,6 @@ Board::~Board()
 //print board
 void Board::print()
 {
-	// newline and 3 spaces
 	cout << endl << "   ";
 
 	//print abcde... etc
@@ -95,7 +94,6 @@ void Board::print()
 
 	for(int y = 0; y < sizeY; y++)
 	{
-		// a is nr 97 on ascii table, 97 + 1 to char = b
 		cout << (char) (97 + y) << "  ";
 		for(int x = 0; x < sizeX; x++)
 		{
